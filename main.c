@@ -27,14 +27,8 @@ int main() {
 
     if (choix1 == 1) {
         //création du menu du jeu
-        printf("Vous avez fait le choix 1 --> Jouer\n");
-        printf("===================================");
-        printf("\n\nCoulez tous les bateaux ennemis et un minimum de tires !");
-        printf("\n=================================\n");
-        printf("\nBonne chance capitaine ! ");
-        printf("\n=================================\n");
+        printf("\n\nVous avez fait le choix 1 --> Jouer\n");
         printf("\nVoici la grille de jeu : 10 x 10 cases");
-        printf("\n=================================\n");
         printf("\nEntrez ci-dessous vos coordonées (ex : B8):");
         scanf("%d", coordonnees);
 
