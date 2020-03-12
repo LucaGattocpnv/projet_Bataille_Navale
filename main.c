@@ -9,25 +9,37 @@ void interfaceDeJeu(){
     system("cls");
     int coordonnees;
     printf("\nVoici la grille de jeu : 10 x 10 cases");
-    printf("\nEntrez ci-dessous vos coordonées  (ex : 18):");
+    printf("\nEntrez ci-dessous vos coordonées  (ex : 18):\n\n");
+    printf("  1   2   3   4   5   6   7   8   9   10\n");
     int grille1 [10] [10] = {
             {0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,1,1,1},
+            {0,0,0,0,0,0,0,0,0,0},
+            {1,1,1,1,1,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,1,1,1,1},
             {0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,1,0,0,0,0},
 
     };
+    //création de la grille
 
+    //mise en place des lignes sauf celle du haut (une ligne = 41 "=").
+    for (int lignes = 0; lignes < 41; ++lignes) {
+        printf("=");
+    }
+    //mise en place de la ligne du haut
     printf("\n");
-    for (int i = 0; i < 10; ++i) {
+    for (int ligneDuDessus = 0; ligneDuDessus < 10; ++ligneDuDessus) {
         for (int j = 0; j < 10; ++j) {
-            printf(" %d ", grille1[i][j]);
+            printf("| %d ", grille1[ligneDuDessus][j]);
+        }
+        //mise en place des colonnes
+        printf("|\n");
+        for (int colonnes = 0; colonnes < 41; ++colonnes) {
+            printf("=");
         }
         printf("\n");
     }
@@ -61,15 +73,17 @@ void afficherAide(){
 void afficherMenuPrincipal(){
     system("cls");
     int choix1;
-
-    printf("\n\n/// Bienvenue sur cette application de bataille navale \\\\\\\n");
-    printf("\n\n==========Menu principal==========\n\n");
-    printf("Choisissez une des propositions suivantes : ");
-    printf("\n1. Jouer");
-    printf("\n2. Aide");
-
+    //tans que l'utilisateur ne rentre pas une valeur soit égale à 1 ou égale à 2, le programme efface la réponse
+    do{
+        system("cls");
+        printf("\n\n/// Bienvenue sur cette application de bataille navale \\\\\\\n");
+        printf("\n\n==========Menu principal==========\n\n");
+        printf("\n1. Jouer");
+        printf("\n2. Aide");
+        printf("\n\nChoisissez une des propositions ci-dessus : ");
     scanf("%d", &choix1);
-    SetConsoleTitle("Bataille Navale");
+    } while (choix1 < 1 || choix1 > 2);
+
 
 
     if (choix1 == 1) {
@@ -86,10 +100,13 @@ void afficherMenuPrincipal(){
         printf("\n=================================\n");
         afficherAide();
         system("cls");
+
     }
+
 }
 int main() {
     SetConsoleOutputCP(CP_UTF8);
+    SetConsoleTitle("Bataille Navale");
     //affichage du menu principal
     system("cls"); //dès que l'utilisateur appuie sur une touche, le programme revient sur le menu principal comme au debut du lancement.
     afficherMenuPrincipal();
