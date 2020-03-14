@@ -7,42 +7,78 @@ void afficherMenuPrincipal();
 //création de l'interface du jeu
 void interfaceDeJeu(){
     system("cls");
+    int valeurcolonne;
+    int valeurligne;
     int coordonnees;
     printf("\nVoici la grille de jeu : 10 x 10 cases");
     printf("\nEntrez ci-dessous vos coordonées  (ex : 18):\n\n");
-    printf("  1   2   3   4   5   6   7   8   9   10\n");
+
+
+
     int grille1 [10] [10] = {
             {0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,1,1,1},
             {0,0,0,0,0,0,0,0,0,0},
             {1,1,1,1,1,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,1,1,1,1},
-            {0,0,0,0,0,0,0,0,0,0},
+            {0,1,0,0,0,0,0,0,0,0},
+            {0,1,0,0,0,0,1,1,1,1},
+            {0,1,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,1,1,0,0,0,0},
 
     };
-    //création de la grille
 
-    //mise en place des lignes sauf celle du haut (une ligne = 41 "=").
-    for (int lignes = 0; lignes < 41; ++lignes) {
-        printf("=");
-    }
-    //mise en place de la ligne du haut
-    printf("\n");
-    for (int ligneDuDessus = 0; ligneDuDessus < 10; ++ligneDuDessus) {
-        for (int j = 0; j < 10; ++j) {
-            printf("| %d ", grille1[ligneDuDessus][j]);
-        }
-        //mise en place des colonnes
-        printf("|\n");
-        for (int colonnes = 0; colonnes < 41; ++colonnes) {
+    //création de la grille
+    while (1) {
+        //mise en place des lignes sauf celle du haut (une ligne = 41 "=").
+        system("cls");
+        printf("  1   2   3   4   5   6   7   8   9   10\n");
+        for (int lignes = 0; lignes < 41; ++lignes) {
             printf("=");
         }
+        //mise en place de la ligne du haut
         printf("\n");
+        for (int ligneDuDessus = 0; ligneDuDessus < 10; ++ligneDuDessus) {
+            for (int j = 0; j < 10; ++j) {
+                if (grille1[ligneDuDessus][j] == 0 || grille1[ligneDuDessus][j] == 1) {
+                    printf("| ^ ");
+                }
+                if (grille1[ligneDuDessus][j] == 2) {
+                    printf("| X ");
+                }
+            }
+
+            //mise en place des colonnes
+            printf("|\n");
+            for (int colonnes = 0; colonnes < 41; ++colonnes) {
+                printf("=");
+            }
+            printf("\n");
+        }
+        //Tans que les valeur des coordonnées ne sont pas entre 1-10, le programme repose les questions.
+        do {
+        printf("\nEntrez votre ligne : ");
+        scanf("%d", &valeurligne);
+        }while (valeurligne < 1 || valeurligne > 10);
+        do {
+        printf("\nEntrez votre colonne : ");
+        scanf("%d", &valeurcolonne);
+        }while (valeurcolonne < 1 || valeurcolonne > 10);
+        //un tableau de en c de 10 cases va de 0-9. J'ai donc dû faire - 1 aux coordonnées entrée afin que la grille soit de 1-10.
+        if (grille1[valeurligne - 1][valeurcolonne -1] == 1) {
+            grille1[valeurligne -1][valeurcolonne -1] = 2;
+            printf ("\n\nToucher !\n");
+            //avant de redemander à l'utilisateur de nouvelles coordonnées, le programme attends 1,005s. (1005ms)
+            Sleep(1005);
+        } else {
+            printf("\n\nA l'eau !\n");
+            Sleep(1005);
+        }
+
     }
+
+
 
     system("pause");
     afficherMenuPrincipal();
@@ -54,17 +90,16 @@ void afficherAide(){
     printf("Grille de jeu\n"
    "\n"
    "Grille de jeu imprimée.\n"
-   "Qu'elle soit en version électronique ou non, la grille de jeu est toujours la même, numérotée de 1 à 10 verticalement et de A à J horizontalement.\n"
-   "\n"
-   "Conventionnellement, les joueurs placent des pions blancs sur la grille lorsque les coordonnées n'ont pas touché de bateau adverse, et rouge lorsqu'une\n touche a été faite."
-   "\n"
-   "\n\nMieux repérer la flotte ennemie\n"
-   "Il existe une méthode pour mieux repérer la flotte ennemie : jouer ses tirs en croix. En admettant que le navire le plus petit du jeu fasse 2 cases,\n il suffit de jouer une case sur deux pour le repérer. Ce qui évite de jouer les cases qui sont entourées par vos tirs parce que vous savez qu'aucun bateau adverse ne peut s'y trouver.\n Cette méthode, purement mathématique se révèle efficace."
+   "La grille est numérotée de 1 à 10 verticalement et de 1 à 10 horizontalement.\n"
    "\n"
    "\n\nRègles\n"
-   "La bataille navale oppose deux joueurs qui s'affrontent. Chacun a une flotte composée de 5 bateaux, qui sont, en général les suivants : 1 porte-avion (5 cases), 1 croiseur (4 cases), 1 contre-torpilleur (3 cases), 1 sous-marin (3 cases), 1 torpilleur (2 cases).Les bateaux ne doivent pas être collés entre eux. Au début du jeu, chaque joueur place ses bateaux sur sa grille. Celle-ci est toujours numérotée de 1 à 10 verticalement et de A à J horizontalement. Un à un, les joueurs vont \"tirer\" sur une case de l'adversaire : par exemple, B.3 ou encore H.8. Le but est donc de couler les bateaux \nadverses. Au fur et à mesure, il faut mettre les pions sur sa propre grille afin de se souvenir de ses tirs passés.\n"
-   "\n"
-   "\nUn fonctionnement plus sophistiqué mettant en œuvre de la stratégie est de tirer une salve (trois coups par exemple) et de donner le résultat global de la salve.\n\n");
+   "L'ennemi a une flotte composée de 5 bateaux, qui sont les suivants : \n1 porte-avion (5 cases), 1 croiseur (4 cases), 1 contre-torpilleur (3 cases), 1 sous-marin (3 cases), 1 torpilleur (2 cases).Les bateaux ne sont pas collés entre eux.\nLe joueur dois entrer des coordonnées de tire (exemple : 18) numéro de la ligne et ensuite celui de la colonne afin de potentiellement toucher/couler un bateau.\nLe but est donc de couler les bateaux adverses. Au fur et à mesure.\n"
+   "Le joueur possede une nombre de tire illimité.\n"
+
+   "\n\nMieux repérer la flotte ennemie\n"
+   "Il existe une méthode pour mieux repérer la flotte ennemie : jouer ses tirs en croix. En admettant que le navire le plus petit du jeu fasse 2 cases,\nil suffit de jouer une case sur deux pour le repérer. Ce qui évite de jouer les cases qui sont entourées par vos tirs parce que vous savez qu'aucun bateau adverse ne peut s'y trouver.\nCette méthode, purement mathématique se révèle efficace."
+   "\n\n");
+
     system("pause");
     afficherMenuPrincipal();
 }
@@ -73,6 +108,7 @@ void afficherAide(){
 void afficherMenuPrincipal(){
     system("cls");
     int choix1;
+
     //tans que l'utilisateur ne rentre pas une valeur soit égale à 1 ou égale à 2, le programme efface la réponse
     do{
         system("cls");
