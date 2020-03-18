@@ -1,3 +1,10 @@
+/*
+ * projet : bataille navale
+ * version : 0.1
+ * auteur : Luca Gatto
+ * desciption : Projet bataille navale dans le cadre d'un test.
+ * Date : 16.03.2020
+ */
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
@@ -30,53 +37,57 @@ void interfaceDeJeu(){
     };
 
     //création de la grille
-    while (1) {
-        //mise en place des lignes sauf celle du haut (une ligne = 41 "=").
-        system("cls");
-        printf("  1   2   3   4   5   6   7   8   9   10\n");
-        for (int lignes = 0; lignes < 41; ++lignes) {
-            printf("=");
-        }
-        //mise en place de la ligne du haut
-        printf("\n");
-        for (int ligneDuDessus = 0; ligneDuDessus < 10; ++ligneDuDessus) {
-            for (int j = 0; j < 10; ++j) {
-                if (grille1[ligneDuDessus][j] == 0 || grille1[ligneDuDessus][j] == 1) {
-                    printf("| ^ ");
-                }
-                if (grille1[ligneDuDessus][j] == 2) {
-                    printf("| X ");
-                }
-            }
+   
+       while (1) {
+           //mise en place des lignes sauf celle du haut (une ligne = 41 "=").
+           system("cls");
+           printf("  1   2   3   4   5   6   7   8   9   10\n");
+           for (int lignes = 0; lignes < 41; ++lignes) {
+               printf("=");
+           }
+           //mise en place de la ligne du haut
+           printf("\n");
+           for (int ligneDuDessus = 0; ligneDuDessus < 10; ++ligneDuDessus) {
+               for (int j = 0; j < 10; ++j) {
+                   if (grille1[ligneDuDessus][j] == 0 || grille1[ligneDuDessus][j] == 1) {
+                       printf("| ^ ");
+                   }
+                   if (grille1[ligneDuDessus][j] == 2) {
+                       printf("| X ");
+                   }
+               }
 
-            //mise en place des colonnes
-            printf("|\n");
-            for (int colonnes = 0; colonnes < 41; ++colonnes) {
-                printf("=");
-            }
-            printf("\n");
-        }
-        //Tans que les valeur des coordonnées ne sont pas entre 1-10, le programme repose les questions.
-        do {
-        printf("\nEntrez votre ligne : ");
-        scanf("%d", &valeurligne);
-        }while (valeurligne < 1 || valeurligne > 10);
-        do {
-        printf("\nEntrez votre colonne : ");
-        scanf("%d", &valeurcolonne);
-        }while (valeurcolonne < 1 || valeurcolonne > 10);
-        //un tableau de en c de 10 cases va de 0-9. J'ai donc dû faire - 1 aux coordonnées entrée afin que la grille soit de 1-10.
-        if (grille1[valeurligne - 1][valeurcolonne -1] == 1) {
-            grille1[valeurligne -1][valeurcolonne -1] = 2;
-            printf ("\n\nToucher !\n");
-            //avant de redemander à l'utilisateur de nouvelles coordonnées, le programme attends 1,005s. (1005ms)
-            Sleep(1005);
-        } else {
-            printf("\n\nA l'eau !\n");
-            Sleep(1005);
-        }
+               //mise en place des colonnes
+               printf("|\n");
+               for (int colonnes = 0; colonnes < 41; ++colonnes) {
+                   printf("=");
+               }
+               printf("\n");
+           }
+           //Tans que les valeur des coordonnées ne sont pas entre 1-10, le programme repose les questions.
+           do {
+               printf("\nEntrez votre ligne : ");
+               scanf("%d", &valeurligne);
+           } while (valeurligne < 1 || valeurligne > 10);
+           do {
+               printf("\nEntrez votre colonne : ");
+               scanf("%d", &valeurcolonne);
+           } while (valeurcolonne < 1 || valeurcolonne > 10);
 
-    }
+           //un tableau de en c de 10 cases va de 0-9. J'ai donc dû faire - 1 aux coordonnées entrée afin que la grille soit de 1-10.
+           if (grille1[valeurligne - 1][valeurcolonne - 1] == 1) {
+               grille1[valeurligne - 1][valeurcolonne - 1] = 2;
+               printf("\n\nToucher !\n");
+               //avant de redemander à l'utilisateur de nouvelles coordonnées, le programme attends 1,005s. (1005ms)
+               Sleep(1005);
+           } else {
+               printf("\n\nA l'eau !\n");
+               Sleep(1005);
+
+           }
+
+       }
+
 
 
 
@@ -113,8 +124,8 @@ void afficherMenuPrincipal(){
     do{
         system("cls");
         printf("\n\n/// Bienvenue sur cette application de bataille navale \\\\\\\n");
-        printf("\n\n==========Menu principal==========\n\n");
-        printf("\n1. Jouer");
+        printf("\n\n======================Menu principal======================\n\n");
+        printf("\n\n1. Jouer");
         printf("\n2. Aide");
         printf("\n\nChoisissez une des propositions ci-dessus : ");
     scanf("%d", &choix1);
