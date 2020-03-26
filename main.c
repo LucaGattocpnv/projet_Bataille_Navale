@@ -1,9 +1,9 @@
 /*
  * projet : bataille navale
- * version : 0.1
+ * version : 1.0
  * auteur : Luca Gatto
  * desciption : Projet bataille navale dans le cadre d'un test.
- * Date : 16.03.2020
+ * Date : 23.03.2020
  */
 #include <stdio.h>
 #include <windows.h>
@@ -35,7 +35,7 @@ void interfaceDeJeu(){
     int sousmarin1Coule = 0, sousmarin2Coule = 0, torpilleurCoule = 0, porteAvionCoule = 0, croiseurCoule = 0;
    
 
-
+    //création du tableau et positionnement des bateaux.
     int grille1 [10] [10]= {0};
     //sous-marin 1
     grille1 [2][3] = 1;
@@ -194,11 +194,12 @@ void afficherAide()
     printf("Grille de jeu\n"
            "\n"
            "Grille de jeu imprimée.\n"
-           "La grille est numérotée de 1 à 10 verticalement et de 1 à 10 horizontalement.\n"
+           "La grille est numérotée de 1 à 10 verticalement et de A à J horizontalement.\n"
            "\n"
            "\n\nRègles\n"
-           "L'ennemi a une flotte composée de 5 bateaux, qui sont les suivants : \n1 porte-avion (5 cases), 1 croiseur (4 cases), 1 contre-torpilleur (3 cases), 1 sous-marin (3 cases), 1 torpilleur (2 cases).Les bateaux ne sont pas collés entre eux.\nLe joueur dois entrer des coordonnées de tire (exemple : 18) numéro de la ligne et ensuite celui de la colonne afin de potentiellement toucher/couler un bateau.\nLe but est donc de couler les bateaux adverses. Au fur et à mesure.\n"
-           "Le joueur possede une nombre de tire illimité.\n"
+           "L'ennemi a une flotte composée de 5 bateaux, qui sont les suivants : \n1 porte-avion (5 cases), 1 croiseur (4 cases), 1 contre-torpilleur (3 cases), 1 sous-marin (3 cases), 1 torpilleur (2 cases).Les bateaux ne sont pas collés entre eux.\nLe joueur dois entrer des coordonnées de tire (exemple : 1A) numéro de la ligne et ensuite celui de la colonne afin de potentiellement toucher/couler un bateau.\nLe but est donc de couler les bateaux adverses. Au fur et à mesure.\n"
+           "Le joueur possede une nombre de tire illimité. "
+           "Quand le joueur parviens à toucher un bateau ennemi, la case affichera un X. Si le tire tombe à l'eau, la case affichera un 0.\nDès que un bâteau est coulé, les cases où est positionné le bâteau afficheront ◙. \n"
 
            "\n\nMieux repérer la flotte ennemie\n"
            "Il existe une méthode pour mieux repérer la flotte ennemie : jouer ses tirs en croix. En admettant que le navire le plus petit du jeu fasse 2 cases,\nil suffit de jouer une case sur deux pour le repérer. Ce qui évite de jouer les cases qui sont entourées par vos tirs parce que vous savez qu'aucun bateau adverse ne peut s'y trouver.\nCette méthode, purement mathématique se révèle efficace."
@@ -236,9 +237,8 @@ void afficherPlanJeu ( int  tableau [10] [10])
                     printf("| 0 ");
                     break;
                 case 4 :
-                    printf("| + ");
+                    printf("| ◙ ");
                     break;
-
             }
 
         }
