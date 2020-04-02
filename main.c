@@ -155,8 +155,28 @@ void afficherMenuPrincipal() {
     //tans que l'utilisateur ne rentre pas une valeur soit égale à 1 ou égale à 2, le programme efface la réponse
     do {
         system("cls");
-        printf("\n\n/// Bienvenue sur cette application de bataille navale \\\\\\\n");
-        printf("\n\n======================Menu principal======================\n\n");
+        printf("\n\n•._.••´¯``•.¸¸.•` [ Bienvenu sur cette application de bataille navale ] `•.¸¸.•´´¯`••._.•\n");
+        printf("\n\n•._.••´¯``•.¸¸.•`•._.••´¯``•.¸¸.•` [ Menu principal ] •._.••´¯``•.¸¸.•``•.¸¸.•´´¯`••._.•\n\n");
+        printf("                  ()\n"
+               "                    ||q',,'\n"
+               "                    ||d,~\n"
+               "         (,---------------------,)\n"
+               "          ',       q888p       ,'\n"
+               "            \\       986       /\n"
+               "             \\  8p, d8b ,q8  /\n"
+               "              ) 888a888a888 (\n"
+               "             /  8b` q8p `d8  \\              O\n"
+               "            /       689       \\             |','\n"
+               "           /       d888b       \\      (,---------,)\n"
+               "         ,'_____________________',     \\   ,8,   /\n"
+               "         (`__________L|_________`)      ) a888a (    _,_\n"
+               "         [___________|___________]     /___`8`___\\   }*{\n"
+               "           }:::|:::::}::|::::::{      (,=========,)  -=-\n"
+               "            '|::::}::|:::::{:|'  .,.    \\:::|:::/    ~`~=\n"
+               "             '|}:::::|::{:::|'          ~\".,.\"~`~\n"
+               "               '|:}::|::::|'~`~\".,.\"\n"
+               "           ~`~\".,.\"~`~\".,                 \"~`~\".,.\"~\n"
+               "                          \".,.\"~`~");
         printf("\n\n1. Jouer");
         printf("\n2. Aide");
         printf("\n\nChoisissez une des propositions ci-dessus : ");
@@ -190,13 +210,31 @@ void afficherMenuPrincipal() {
 void afficherAide()
 {
     system("cls");
-    printf("\nVoici les règles : ");
+
+    printf ("                        |----.___\n"
+            "                                |----.___',\n"
+            "              ._________________|_______________.\n"
+            "              |####|    |####|    |####|   |####|\n"
+            "              |####|    |####|    |####|    |####|       .\n"
+            "              |####|    |####|    |####|    |####|     /|_____.\n"
+            "  __          |####|    |####|    |####|    |####|   |  o  ..|\n"
+            "(  '.         '####|    '####|    '####|    '####|   '.  .vvv'\n"
+            " '@ |          |####.    |####.    |####.    |####|    ||\n"
+            "  | |          '####.    '####.    '####.    '####.    ||\n"
+            " /  |         /####.    /####.    /####.    /####.     |'.\n"
+            "|    |       '####/    '####/    '####/    '####/      |  |\n"
+            "|     |  .  /####|____/####|____/####|____/####|      |    |\n"
+            "|      |//   .#'#. .*'*. .#'#. .*'*. .#'#. .*'*.     |      |\n"
+            " |     //-...#'#'#-*'*'*-#'#'#-*'*'*-#'#'#-*'*'*-...'        |\n"
+            "  |   //     '#'#' '*'*' '#'#' '*'*' '#'#' '*'*'             |\n"
+            "   './/                                                     .'\n"
+            "   _//'._                                                _.'\n"
+            "  /  /   '----------------------------------------------'");
+    printf("\n\n\n•._.••´¯``•.¸¸.•`•._.••´¯``•.¸¸.•` [ Voici les règles ] •._.••´¯``•.¸¸.•``•.¸¸.•´´¯`••._.• \n\n");
     printf("Grille de jeu\n"
-           "\n"
-           "Grille de jeu imprimée.\n"
+           "\nGrille de jeu imprimée.\n"
            "La grille est numérotée de 1 à 10 verticalement et de A à J horizontalement.\n"
-           "\n"
-           "\n\nRègles\n"
+           "\n\nRègles : \n"
            "L'ennemi a une flotte composée de 5 bateaux, qui sont les suivants : \n1 porte-avion (5 cases), 1 croiseur (4 cases), 1 contre-torpilleur (3 cases), 1 sous-marin (3 cases), 1 torpilleur (2 cases).Les bateaux ne sont pas collés entre eux.\nLe joueur dois entrer des coordonnées de tire (exemple : 1A) numéro de la ligne et ensuite celui de la colonne afin de potentiellement toucher/couler un bateau.\nLe but est donc de couler les bateaux adverses. Au fur et à mesure.\n"
            "Le joueur possede une nombre de tire illimité. "
            "Quand le joueur parviens à toucher un bateau ennemi, la case affichera un X. Si le tire tombe à l'eau, la case affichera un 0.\nDès que un bâteau est coulé, les cases où est positionné le bâteau afficheront ◙. \n"
